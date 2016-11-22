@@ -11,7 +11,7 @@
 |
 */
 
-Route::group(['middleware' => ['web']], function() {
+Route::group(['middleware' => ['web', 'auth']], function() {
   Route::get('/', function () {
     return view('welcome', array('title' => 'Laravel'));
   });
@@ -41,3 +41,9 @@ Route::group(['middleware' => ['web']], function() {
   // Update note.
   Route::patch('notes/{note}', 'pages\NotesController@update');
 });
+
+Route::get('products', 'pages\ProductsController@index');
+
+Auth::routes();
+
+// Route::get('/home', 'HomeController@index');
